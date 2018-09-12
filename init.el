@@ -40,6 +40,8 @@
 
 ;;; Keybindings ==========================================================
 
+(setq mac-command-modifier 'control)
+
 ;; Exchang C-x to C-b
 (keyboard-translate ?\C-x ?\C-b)
 (keyboard-translate ?\C-b ?\C-x)
@@ -145,7 +147,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (flycheck nim-mode counsel-projectile projectile ac-ispell counsel undo-tree swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
+    (flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))
