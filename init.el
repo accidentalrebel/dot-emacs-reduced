@@ -54,10 +54,12 @@
 (bind-key "C-c f" 'find-file)
 (bind-key "C-c e s" 'eshell)
 (bind-key "C-x e" 'other-frame)
+(bind-key "C-c C-v" 'revert-buffer)
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;;; Theme ==========================================================
-(load-theme 'wombat)
+(load-theme 'deeper-blue)
+(set-face-attribute 'default nil :height 160)
 
 ;;; Editing ==========================================================
 (use-package swiper
@@ -112,8 +114,7 @@
 	  ("technical" . ?t)
 	  ("tv" . ?v)))
   :bind (("C-c a" . org-agenda)
-	 ("C-c c" . org-capture))
-  )
+	 ("C-c c" . org-capture)))
 
 ;;; Remoting ==========================================================
 
@@ -129,6 +130,26 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;;; Programming ==========================================================
+
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode))
+
+(use-package company
+  :config
+  (add-to-list 'company-backends #'company-omnisharp)
+  (add-to-list 'company-backends #'company-jedi)
+  :hook ((csharp-mode . company-mode)
+	 (python-mode . company-mode)))
+
+(use-package omnisharp
+  :hook (csharp-mode . omnisharp-mode)
+  :bind (("C-c C-s" . omnisharp-reload-solution)))
+
+(use-package projectile
+  :bind (("C-c C-f" . projectile-find-file)
+	 ("C-c C-r" . projectile-ripgrep)))
 
 (modify-coding-system-alist 'file "\\.C\\'" 'utf-8-dos)
 (modify-coding-system-alist 'file "\\.H\\'" 'utf-8-dos)
@@ -147,7 +168,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
+    (exec-path-from-shell company-jedi markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))
@@ -157,3 +178,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;;;
