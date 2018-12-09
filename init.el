@@ -116,6 +116,9 @@
   :bind (("C-c a" . org-agenda)
 	 ("C-c c" . org-capture)))
 
+(use-package calfw)
+(use-package calfw-org)
+
 ;;; Remoting ==========================================================
 
 (setq tramp-default-method "ssh")
@@ -151,6 +154,9 @@
   :bind (("C-c C-f" . projectile-find-file)
 	 ("C-c C-r" . projectile-ripgrep)))
 
+(use-package jedi
+  :bind (("M-s d" . jedi:goto-definition)))
+
 (modify-coding-system-alist 'file "\\.C\\'" 'utf-8-dos)
 (modify-coding-system-alist 'file "\\.H\\'" 'utf-8-dos)
 
@@ -168,7 +174,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (exec-path-from-shell company-jedi markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
+    (calfw-org calfw-cal calfw exec-path-from-shell company-jedi markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))

@@ -1,0 +1,11 @@
+.cache/*
+.python-environments/*
+auto-save-list/*
+bookmarks
+elpa/*
+eshell/*
+projectile-bookmarks.eld
+recentf
+smex-items
+tramp
+url/*
