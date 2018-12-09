@@ -10,6 +10,15 @@
 
 (require 'use-package)
 
+(use-package evil
+  :init
+  (define-key evil-normal-state-map (kbd ";") 'avy-goto-word-1)
+  (define-key evil-normal-state-map (kbd ",") 'avy-goto-char-2)  (define-key evil-normal-state-map (kbd "'") 'avy-goto-line)
+  (define-key evil-normal-state-map (kbd "~") 'evil-digit-argument-or-evil-beginning-of-line)
+  (define-key evil-normal-state-map (kbd "#") 'evil-end-of-line)
+  :config
+  (evil-mode 1))
+
 (use-package golden-ratio
   :config
   (golden-ratio-mode))
@@ -174,7 +183,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (calfw-org calfw-cal calfw exec-path-from-shell company-jedi markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
+    (evil-tutor evil calfw-org calfw-cal calfw exec-path-from-shell company-jedi markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))
