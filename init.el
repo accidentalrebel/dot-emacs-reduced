@@ -5,19 +5,12 @@
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives
 	     '("melpa-stable" . "http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives
+	     '("org" . "http://orgmode.org/elpa/"))
 
 ;;; Packages ==========================================================
 
 (require 'use-package)
-
-(use-package evil
-  :init
-  (define-key evil-normal-state-map (kbd ";") 'avy-goto-word-1)
-  (define-key evil-normal-state-map (kbd ",") 'avy-goto-char-2)  (define-key evil-normal-state-map (kbd "'") 'avy-goto-line)
-  (define-key evil-normal-state-map (kbd "~") 'evil-digit-argument-or-evil-beginning-of-line)
-  (define-key evil-normal-state-map (kbd "#") 'evil-end-of-line)
-  :config
-  (evil-mode 1))
 
 (use-package golden-ratio
   :config
@@ -68,7 +61,7 @@
 
 ;;; Theme ==========================================================
 (load-theme 'deeper-blue)
-(set-face-attribute 'default nil :height 160)
+(set-face-attribute 'default nil :height 130 :weight 'bold)
 
 ;;; Editing ==========================================================
 (use-package swiper
@@ -93,11 +86,6 @@
 (show-paren-mode)
 
 ;;; Org ==========================================================
-(use-package org-journal
-  :init
-  (setq org-journal-dir "~/org/journals/")
-  (setq org-journal-file-format "%Y%m%d.org"))
-
 (use-package org
   :init
   (setq org-default-notes-file "~/org/notes/notes.org"
@@ -124,6 +112,12 @@
 	  ("tv" . ?v)))
   :bind (("C-c a" . org-agenda)
 	 ("C-c c" . org-capture)))
+
+(use-package org-journal
+  :after org
+  :init
+  (setq org-journal-dir "~/org/journals/")
+  (setq org-journal-file-format "%Y%m%d.org"))
 
 (use-package calfw)
 (use-package calfw-org)
@@ -183,7 +177,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil-tutor evil calfw-org calfw-cal calfw exec-path-from-shell company-jedi markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
+    (org calfw-org calfw-cal calfw exec-path-from-shell company-jedi markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))
@@ -195,3 +189,5 @@
  )
 
 ;;;
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
