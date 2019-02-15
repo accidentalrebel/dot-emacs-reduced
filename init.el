@@ -29,6 +29,7 @@
   (ivy-mode))
 
 (use-package bind-key)
+(use-package sudo-edit)
 
 (use-package eww-lnum
   :bind(:map eww-mode-map
@@ -39,6 +40,11 @@
   :bind(("C-c r" . counsel-recentf)))
 
 (add-to-list 'load-path "~/development/projects/elisp")
+
+(use-package alert
+  :commands (alert)
+  :init
+  (setq alert-default-style 'message))
 
 ;;; Keybindings ==========================================================
 
@@ -61,7 +67,11 @@
 
 ;;; Theme ==========================================================
 (load-theme 'deeper-blue)
-(set-face-attribute 'default nil :height 130 :weight 'bold)
+(set-face-attribute 'default nil :height 110 :weight 'bold :font "DejaVu Sans Mono")
+
+;;; Auth ==========================================================
+(when (file-exists-p "~/.emacs.d/auth.el")
+  (load "~/.emacs.d/auth.el"))
 
 ;;; Editing ==========================================================
 (use-package swiper
@@ -119,8 +129,8 @@
   (setq org-journal-dir "~/org/journals/")
   (setq org-journal-file-format "%Y%m%d.org"))
 
-(use-package calfw)
-(use-package calfw-org)
+;; (use-package calfw)
+;; (use-package calfw-org)
 
 ;;; Remoting ==========================================================
 
@@ -150,6 +160,8 @@
 	 (python-mode . company-mode)))
 
 (use-package omnisharp
+  :init
+  (setq omnisharp-server-executable-path "/home/arebel/development/tools/omnisharp/run")
   :hook (csharp-mode . omnisharp-mode)
   :bind (("C-c C-s" . omnisharp-reload-solution)))
 
@@ -163,8 +175,18 @@
 (modify-coding-system-alist 'file "\\.C\\'" 'utf-8-dos)
 (modify-coding-system-alist 'file "\\.H\\'" 'utf-8-dos)
 
-;;; Twitch ==========================================================
-(load-file "~/development/projects/twitch/rebeldebot/rebeldebot.el")
+;;; Slack ==========================================================
+(use-package slack
+  :commands (slack-start)
+  :config
+   (slack-register-team
+   :name "mindcake-slack"
+   :default t
+   :client-id auth--slack-client-id
+   :client-secret auth--slack-client-secret
+   :token auth--slack-client-token
+   :subscribed-channels '(chefwars_dev)
+   :full-and-display-names t))
 
 ;;; Backups ==========================================================
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
@@ -177,7 +199,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org calfw-org calfw-cal calfw exec-path-from-shell company-jedi markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
+    (oauth slack jedi sudo-edit org calfw-org calfw-cal calfw exec-path-from-shell company-jedi markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))

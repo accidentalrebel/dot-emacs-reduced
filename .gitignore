@@ -10,3 +10,6 @@ smex-items
 tramp
 url/*
 #*.*#
+/auth.el
+/request/*
+/transient/*
