@@ -163,7 +163,8 @@
   :init
   (setq omnisharp-server-executable-path "/home/arebel/development/tools/omnisharp/run")
   :hook (csharp-mode . omnisharp-mode)
-  :bind (("C-c C-s" . omnisharp-reload-solution)))
+  :bind (("C-c C-e" . omnisharp-run-code-action-refactoring)
+	 ("C-c C-s" . omnisharp-reload-solution)))
 
 (use-package projectile
   :bind (("C-c C-f" . projectile-find-file)
