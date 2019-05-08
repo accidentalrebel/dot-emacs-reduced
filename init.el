@@ -99,11 +99,11 @@
 (use-package org
   :init
   (setq org-default-notes-file "~/org/notes/notes.org"
-	org-agenda-files (list "~/org/notes/mindcake/mindcake-notes.org"
+	org-agenda-files (list "~/org/todos/todos.org"
+			       "~/org/notes/mindcake/mindcake-notes.org"
 			       "~/org/notes/personal/personal-notes.org"
-			       "~/org/notes/projects/project-notes.org"
-			       "~/org/notes/stream/stream-notes.org")
-	org-refile-targets '((org-agenda-files . (:maxlevel . 1)))
+			       "~/org/notes/projects/project-notes.org")
+	org-refile-targets '(("~/org/todos/todos.org" . (:maxlevel . 1)))
 	org-agenda-start-on-weekday 1)
   (setq org-tag-alist
 	'(("achievement" . ?a)
