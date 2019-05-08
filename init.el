@@ -101,6 +101,7 @@
   (setq org-default-notes-file "~/org/notes/notes.org"
 	org-agenda-files (list "~/org/notes/mindcake/mindcake-notes.org"
 			       "~/org/notes/personal/personal-notes.org"
+			       "~/org/notes/projects/project-notes.org"
 			       "~/org/notes/stream/stream-notes.org")
 	org-refile-targets '((org-agenda-files . (:maxlevel . 1)))
 	org-agenda-start-on-weekday 1)
@@ -129,8 +130,10 @@
   (setq org-journal-dir "~/org/journals/")
   (setq org-journal-file-format "%Y%m%d.org"))
 
-;; (use-package calfw)
-;; (use-package calfw-org)
+(use-package calfw)
+(use-package calfw-org
+  :init
+  (setq cfw:org-overwrite-default-keybinding t))
 
 ;;; Remoting ==========================================================
 
@@ -200,7 +203,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (oauth slack jedi sudo-edit org calfw-org calfw-cal calfw exec-path-from-shell company-jedi markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
+    (calfw arduino-mode company-jedi oauth slack sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))
