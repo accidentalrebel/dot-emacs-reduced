@@ -104,8 +104,13 @@
 			       "~/org/notes/personal/personal-notes.org"
 			       "~/org/notes/projects/project-notes.org")
 	org-refile-targets '(("~/org/todos/todos.org" . (:maxlevel . 1)))
-	org-agenda-start-on-weekday 1)
-  (setq org-tag-alist
+	org-agenda-start-on-weekday 1
+	org-todo-keywords '((sequence "TODO" "STARTED" "DONE"))
+	org-todo-keyword-faces
+	'(("TODO" . (:foreground "black" :background "#ff39a3" :weight bold))
+	  ("STARTED" . (:foreground "black" :background "orange" :weight bold))
+	  ("DONE" . (:foreground "black" :background "green" :weight bold)))
+	org-tag-alist
 	'(("achievement" . ?a)
 	  ("business" . ?b)
 	  ("dev" . ?d)
@@ -134,6 +139,10 @@
 (use-package calfw-org
   :init
   (setq cfw:org-overwrite-default-keybinding t))
+
+;;; Special code ==========================================================
+(when (file-exists-p "~/development/projects/python/arebel-blog-helper/arebel-blog-helper.el")
+  (load "~/development/projects/python/arebel-blog-helper/arebel-blog-helper.el"))
 
 ;;; Remoting ==========================================================
 
@@ -203,7 +212,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (calfw arduino-mode company-jedi oauth slack sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
+    (multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth slack sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))
