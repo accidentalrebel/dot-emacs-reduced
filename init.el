@@ -32,9 +32,14 @@
 (use-package sudo-edit)
 
 (use-package eww-lnum
-  :bind(:map eww-mode-map
-	     ("f" . eww-lnum-follow)
-	     ("F" . eww-lnum-universal)))
+  :no-require t
+  :config
+  (define-key eww-mode-map "f" 'eww-lnum-follow)
+  (define-key eww-mode-map "F" 'eww-lnum-universal))
+
+(use-package lua-mode
+  :bind(:map lua-mode-map
+	     ("<f5>" . compile)))
 
 (use-package recentf-mode
   :bind(("C-c r" . counsel-recentf)))
@@ -60,7 +65,7 @@
 (bind-key "C-c C-b" 'eval-buffer)
 (bind-key "C-z" 'undo)
 (bind-key "C-c f" 'find-file)
-(bind-key "C-c e s" 'eshell)
+(bind-key "C-c e s" 'multi-term)
 (bind-key "C-x e" 'other-frame)
 (bind-key "C-c C-v" 'revert-buffer)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -168,7 +173,8 @@
   :config
   (add-to-list 'company-backends #'company-omnisharp)
   (add-to-list 'company-backends #'company-jedi)
-  :hook ((csharp-mode . company-mode)
+  :hook ((lua-mode . company-mode)
+	 (csharp-mode . company-mode)
 	 (python-mode . company-mode)))
 
 (use-package omnisharp
@@ -188,7 +194,7 @@
 (modify-coding-system-alist 'file "\\.C\\'" 'utf-8-dos)
 (modify-coding-system-alist 'file "\\.H\\'" 'utf-8-dos)
 
-;;; Slack ==========================================================
+;;; Social ==========================================================
 (use-package slack
   :commands (slack-start)
   :config
@@ -201,6 +207,10 @@
    :subscribed-channels '(chefwars_dev)
    :full-and-display-names t))
 
+(use-package twittering-mode
+  :init
+  (setq twittering-icon-mode t))
+
 ;;; Backups ==========================================================
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 
@@ -212,7 +222,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth slack sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
+    (lua-mode multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))
