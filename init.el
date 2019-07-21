@@ -31,11 +31,13 @@
 (use-package bind-key)
 (use-package sudo-edit)
 
+(use-package eww)
+
 (use-package eww-lnum
-  :no-require t
-  :config
-  (define-key eww-mode-map "f" 'eww-lnum-follow)
-  (define-key eww-mode-map "F" 'eww-lnum-universal))
+  :after eww
+  :bind(:map eww-mode-map
+	     ("f" . eww-lnum-follow)
+	     ("F" . eww-lnum-universal)))
 
 (use-package lua-mode
   :bind(:map lua-mode-map
