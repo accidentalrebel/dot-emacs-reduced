@@ -13,3 +13,7 @@ url/*
 /auth.el
 /request/*
 /transient/*
+/%backup%~
+/hackernews/*
+/recentf~
+/history
