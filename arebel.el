@@ -1,3 +1,5 @@
+b(show-paren-mode)
+
 ;;; Packages
 (use-package eww)
 
@@ -18,6 +20,16 @@
   :init
   (setq alert-default-style 'message))
 
+(use-package swiper
+  :preface
+  (defun swiper-at-point ()
+    (interactive)
+    (swiper (thing-at-point 'word)))
+  :bind (("M-s s" . swiper)
+	 ("M-s M-s" . swiper-at-point)))
+
+(use-package recentf-mode
+  :bind(("C-c r" . counsel-recentf)))
 
 ;;; Auth ==========================================================
 (when (file-exists-p "~/.emacs.d/auth.el")
@@ -126,4 +138,9 @@
       '("https://www.rockysunico.com/feeds/posts/default?alt=rss"
 	"https://www.shamusyoung.com/twentysidedtale/?feed=rss2"
 	"https://groups.google.com/forum/feed/pagedout-notifications/msgs/rss.xml?num=15"))
+
+;;; Remoting ==========================================================
+(setq tramp-default-method "ssh")
+
+
 

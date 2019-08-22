@@ -50,22 +50,6 @@
 
 (use-package sudo-edit)
 
-(use-package recentf-mode
-  :bind(("C-c r" . counsel-recentf)))
-
-;;; Theme ==========================================================
-(load-theme 'deeper-blue)
-(set-face-attribute 'default nil :height 110 :weight 'bold :font "DejaVu Sans Mono")
-
-;;; Editing ==========================================================
-(use-package swiper
-  :preface
-  (defun swiper-at-point ()
-    (interactive)
-    (swiper (thing-at-point 'word)))
-  :bind (("M-s s" . swiper)
-	 ("M-s M-s" . swiper-at-point)))
-
 (use-package counsel
   :config
   (counsel-mode))
@@ -77,14 +61,13 @@
   :config
   (global-undo-tree-mode))
 
-(show-paren-mode)
+;;; Theme ==========================================================
+(load-theme 'deeper-blue)
+(set-face-attribute 'default nil :height 110 :weight 'bold :font "DejaVu Sans Mono")
 
 ;;; Setting up ==========================================================
 (when (file-exists-p "~/.emacs.d/arebel.el")
   (load "~/.emacs.d/arebel.el"))
-
-;;; Remoting ==========================================================
-(setq tramp-default-method "ssh")
 
 ;;; Editor ==========================================================
 
