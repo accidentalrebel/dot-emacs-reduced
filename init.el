@@ -8,6 +8,25 @@
 (add-to-list 'package-archives
 	     '("org" . "http://orgmode.org/elpa/"))
 
+;;; Keybindings ==========================================================
+
+(setq mac-command-modifier 'control)
+
+;; Exchang C-x to C-b
+(keyboard-translate ?\C-x ?\C-b)
+(keyboard-translate ?\C-b ?\C-x)
+;; Exchange M-x to M-b
+(define-key key-translation-map [?\M-x] [?\M-b])
+(define-key key-translation-map [?\M-b] [?\M-x])
+
+(bind-key "C-c C-b" 'eval-buffer)
+(bind-key "C-z" 'undo)
+(bind-key "C-c f" 'find-file)
+(bind-key "C-c e s" 'multi-term)
+(bind-key "C-x e" 'other-frame)
+(bind-key "C-c C-v" 'revert-buffer)
+(fset 'yes-or-no-p 'y-or-n-p)
+
 ;;; Packages ==========================================================
 
 (require 'use-package)
@@ -33,25 +52,6 @@
 
 (use-package recentf-mode
   :bind(("C-c r" . counsel-recentf)))
-
-;;; Keybindings ==========================================================
-
-(setq mac-command-modifier 'control)
-
-;; Exchang C-x to C-b
-(keyboard-translate ?\C-x ?\C-b)
-(keyboard-translate ?\C-b ?\C-x)
-;; Exchange M-x to M-b
-(define-key key-translation-map [?\M-x] [?\M-b])
-(define-key key-translation-map [?\M-b] [?\M-x])
-
-(bind-key "C-c C-b" 'eval-buffer)
-(bind-key "C-z" 'undo)
-(bind-key "C-c f" 'find-file)
-(bind-key "C-c e s" 'multi-term)
-(bind-key "C-x e" 'other-frame)
-(bind-key "C-c C-v" 'revert-buffer)
-(fset 'yes-or-no-p 'y-or-n-p)
 
 ;;; Theme ==========================================================
 (load-theme 'deeper-blue)
