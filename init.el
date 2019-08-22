@@ -142,6 +142,8 @@
   (setq org-journal-dir "~/org/journals/")
   (setq org-journal-file-format "%Y%m%d.org"))
 
+(use-package org-tempo)
+
 (use-package calfw)
 (use-package calfw-org
   :init
@@ -150,6 +152,14 @@
 ;;; Special code ==========================================================
 (when (file-exists-p "~/development/projects/python/arebel-blog-helper/arebel-blog-helper.el")
   (load "~/development/projects/python/arebel-blog-helper/arebel-blog-helper.el"))
+
+(load "~/development/projects/elisp/slack-cli/slack-cli.el")
+(setq slack-cli-channels '( "bot-test-channel" "chefwars_dev" "chefwars_art"))
+
+(setq elfeed-feeds
+      '("https://www.rockysunico.com/feeds/posts/default?alt=rss"
+	"https://www.shamusyoung.com/twentysidedtale/?feed=rss2"
+	"https://groups.google.com/forum/feed/pagedout-notifications/msgs/rss.xml?num=15"))
 
 ;;; Remoting ==========================================================
 
@@ -177,7 +187,8 @@
   (add-to-list 'company-backends #'company-jedi)
   :hook ((lua-mode . company-mode)
 	 (csharp-mode . company-mode)
-	 (python-mode . company-mode)))
+	 (python-mode . company-mode)
+	 (nim-mode-hook . nimsuggest-mode)))
 
 (use-package omnisharp
   :init
@@ -197,17 +208,6 @@
 (modify-coding-system-alist 'file "\\.H\\'" 'utf-8-dos)
 
 ;;; Social ==========================================================
-(use-package slack
-  :commands (slack-start)
-  :config
-   (slack-register-team
-   :name "mindcake-slack"
-   :default t
-   :client-id auth--slack-client-id
-   :client-secret auth--slack-client-secret
-   :token auth--slack-client-token
-   :subscribed-channels '(chefwars_dev)
-   :full-and-display-names t))
 
 (use-package twittering-mode
   :init
@@ -223,8 +223,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (lua-mode multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
+   '(elfeed php-mode hackernews lua-mode multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))
