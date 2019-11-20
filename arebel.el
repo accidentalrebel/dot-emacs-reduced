@@ -1,4 +1,4 @@
-b(show-paren-mode)
+(show-paren-mode)
 
 ;;; Packages
 (use-package eww)
@@ -90,25 +90,27 @@ b(show-paren-mode)
 
 (use-package company
   :config
-  (add-to-list 'company-backends #'company-omnisharp)
   (add-to-list 'company-backends #'company-jedi)
   :hook ((lua-mode . company-mode)
 	 (csharp-mode . company-mode)
+	 (python-mode . jedi:setup)
 	 (python-mode . company-mode)
 	 (nim-mode-hook . nimsuggest-mode)))
+
+;; (use-package omnisharp
+;;   :init
+;;   ;;(setq omnisharp-server-executable-path "/home/arebel/development/tools/omnisharp/run")
+;;   :hook (csharp-mode . omnisharp-mode)
+;;   :bind (("C-c C-e" . omnisharp-run-code-action-refactoring)
+;; 	 ("C-c C-s" . omnisharp-reload-solution)))
 
 (use-package projectile
   :bind (("C-c C-f" . projectile-find-file)
 	 ("C-c C-r" . projectile-ripgrep)))
 
-(use-package omnisharp
-  :init
-  (setq omnisharp-server-executable-path "/home/arebel/development/tools/omnisharp/run")
-  :hook (csharp-mode . omnisharp-mode)
-  :bind (("C-c C-e" . omnisharp-run-code-action-refactoring)
-	 ("C-c C-s" . omnisharp-reload-solution)))
-
 (use-package jedi
+  :init
+  (setq jedi:complete-on-dot t)
   :bind (("M-s d" . jedi:goto-definition)))
 
 ;;; For DOS Development
@@ -141,6 +143,12 @@ b(show-paren-mode)
 
 ;;; Remoting ==========================================================
 (setq tramp-default-method "ssh")
+
+(defun arebel-open-unity-editor-log()
+  "Opens the unity editor log"
+  (interactive)
+  (find-file "~/.config/unity3d/Editor.log")
+  (auto-revert-mode))
 
 
 

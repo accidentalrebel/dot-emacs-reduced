@@ -31,6 +31,7 @@
 
 (require 'use-package)
 (use-package bind-key)
+(use-package multi-term)
 
 (use-package golden-ratio
   :config
@@ -63,7 +64,7 @@
 
 ;;; Theme ==========================================================
 (load-theme 'deeper-blue)
-(set-face-attribute 'default nil :height 110 :weight 'bold :font "DejaVu Sans Mono")
+(set-face-attribute 'default nil :height 116 :weight 'normal :font "DejaVu Sans Mono")
 
 ;;; Setting up ==========================================================
 (when (file-exists-p "~/.emacs.d/arebel.el")
@@ -84,8 +85,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(auth-source-save-behavior nil)
  '(package-selected-packages
-   '(elfeed php-mode hackernews lua-mode multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company omnisharp flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper csharp-mode org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key))
+   (quote
+    (csharp-mode speed-type elfeed php-mode hackernews lua-mode multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))
