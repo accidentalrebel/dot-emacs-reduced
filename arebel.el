@@ -75,34 +75,35 @@
   (setq org-journal-dir "~/org/journals/")
   (setq org-journal-file-format "%Y%m%d.org"))
 
-(use-package org-tempo)
-
-(use-package calfw)
-(use-package calfw-org
-  :init
-  (setq cfw:org-overwrite-default-keybinding t))
+;; (use-package org-tempo)
 
 ;;; Programming ==========================================================
+(use-package yasnippet
+  :init
+  (yas-global-mode))
+
 (use-package flycheck
   :ensure t
   :init
-  (global-flycheck-mode))
+  (global-flycheck-mode)
+  :hook ((csharp-mode . flycheck-mode)))
 
 (use-package company
   :config
   (add-to-list 'company-backends #'company-jedi)
+  (add-to-list 'company-backends #'company-omnisharp)
   :hook ((lua-mode . company-mode)
 	 (csharp-mode . company-mode)
 	 (python-mode . jedi:setup)
 	 (python-mode . company-mode)
 	 (nim-mode-hook . nimsuggest-mode)))
 
-;; (use-package omnisharp
-;;   :init
-;;   ;;(setq omnisharp-server-executable-path "/home/arebel/development/tools/omnisharp/run")
-;;   :hook (csharp-mode . omnisharp-mode)
-;;   :bind (("C-c C-e" . omnisharp-run-code-action-refactoring)
-;; 	 ("C-c C-s" . omnisharp-reload-solution)))
+(use-package omnisharp
+  :init
+  ;;(setq omnisharp-server-executable-path "/home/arebel/development/tools/omnisharp/run")
+  :hook (csharp-mode . omnisharp-mode)
+  :bind (("C-c C-e" . omnisharp-run-code-action-refactoring)
+	 ("C-c C-s" . omnisharp-reload-solution)))
 
 (use-package projectile
   :bind (("C-c C-f" . projectile-find-file)
@@ -118,9 +119,9 @@
 (modify-coding-system-alist 'file "\\.H\\'" 'utf-8-dos)
 
 ;;; Social ==========================================================
-(use-package twittering-mode
-  :init
-  (setq twittering-icon-mode t))
+;; (use-package twittering-mode
+;;   :init
+;;   (setq twittering-icon-mode t))
 
 ;;; Backups ==========================================================
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
@@ -133,13 +134,13 @@
 (when (file-exists-p "~/development/projects/python/arebel-blog-helper/arebel-blog-helper.el")
   (load "~/development/projects/python/arebel-blog-helper/arebel-blog-helper.el"))
 
-(load "~/development/projects/elisp/slack-cli/slack-cli.el")
+(when (file-exists-p "~/development/projects/elisp/slack-cli/slack-cli.el")
+  (load "~/development/projects/elisp/slack-cli/slack-cli.el"))
+
 (setq slack-cli-channels '( "bot-test-channel" "chefwars_dev" "chefwars_art"))
 
 (setq elfeed-feeds
-      '("https://www.rockysunico.com/feeds/posts/default?alt=rss"
-	"https://www.shamusyoung.com/twentysidedtale/?feed=rss2"
-	"https://groups.google.com/forum/feed/pagedout-notifications/msgs/rss.xml?num=15"))
+      '("https://www.rockysunico.com/feeds/posts/default?alt=rss"))
 
 ;;; Remoting ==========================================================
 (setq tramp-default-method "ssh")
@@ -149,6 +150,3 @@
   (interactive)
   (find-file "~/.config/unity3d/Editor.log")
   (auto-revert-mode))
-
-
-

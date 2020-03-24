@@ -3,8 +3,8 @@
 (package-initialize)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives
-	     '("melpa-stable" . "http://stable.melpa.org/packages/"))
+;; (add-to-list 'package-archives
+;; 	     '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (add-to-list 'package-archives
 	     '("org" . "http://orgmode.org/elpa/"))
 
@@ -85,10 +85,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(asana-my-user-task-list-gid "36614033405452" t)
+ '(asana-selected-workspace-gid "36614015217976" t)
+ '(asana-selected-workspace-name "Mindcake Games" t)
  '(auth-source-save-behavior nil)
  '(package-selected-packages
    (quote
-    (csharp-mode speed-type elfeed php-mode hackernews lua-mode multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
+    (helm jedi omnisharp yasnippet-classic-snippets yasnippet csharp-mode speed-type elfeed php-mode hackernews lua-mode multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))
