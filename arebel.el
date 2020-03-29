@@ -92,7 +92,9 @@
   :config
   (add-to-list 'company-backends #'company-jedi)
   (add-to-list 'company-backends #'company-omnisharp)
+  (add-to-list 'company-backends #'company-clang)
   :hook ((lua-mode . company-mode)
+	 (c++-mode . company-mode)
 	 (csharp-mode . company-mode)
 	 (python-mode . jedi:setup)
 	 (python-mode . company-mode)
@@ -113,6 +115,22 @@
   :init
   (setq jedi:complete-on-dot t)
   :bind (("M-s d" . jedi:goto-definition)))
+
+(use-package cc-mode
+  :preface
+  (defun arebel-setup-cpp ()
+    (c-set-style "linux")
+    (c-set-offset 'innamespace '0)
+    (c-set-offset 'inextern-lang '0)
+    (c-set-offset 'inline-open '0)
+    (c-set-offset 'label '*)
+    (c-set-offset 'case-label '*)
+    (c-set-offset 'access-label '/)
+    (setq c-basic-offset 2)
+    (setq tab-width 2)
+    (setq indent-tabs-mode t))
+  :config
+  (add-hook 'c++-mode-hook #'arebel-setup-cpp))
 
 ;;; For DOS Development
 (modify-coding-system-alist 'file "\\.C\\'" 'utf-8-dos)
