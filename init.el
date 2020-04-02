@@ -34,6 +34,9 @@
 (use-package multi-term)
 
 (use-package golden-ratio
+  :init
+  (setq golden-ratio-auto-scale nil
+	golden-ratio-adjust-factor 1)
   :config
   (golden-ratio-mode))
 
@@ -64,7 +67,7 @@
 
 ;;; Theme ==========================================================
 (load-theme 'deeper-blue)
-(set-face-attribute 'default nil :height 116 :weight 'normal :font "DejaVu Sans Mono")
+(set-face-attribute 'default nil :height 160 :weight 'normal :font "DejaVu Sans Mono")
 
 ;;; Setting up ==========================================================
 (when (file-exists-p "~/.emacs.d/arebel.el")
