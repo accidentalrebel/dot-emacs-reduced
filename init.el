@@ -25,6 +25,7 @@
 (bind-key "C-c e s" 'multi-term)
 (bind-key "C-x e" 'other-frame)
 (bind-key "C-c C-v" 'revert-buffer)
+(bind-key "C-x m" `compile)
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;;; Packages ==========================================================
