@@ -39,11 +39,12 @@
 (use-package org
   :init
   (setq org-default-notes-file "~/org/notes/notes.org"
-	org-agenda-files (list "~/org/todos/todos.org"
-			       "~/org/notes/mindcake/mindcake-notes.org"
-			       "~/org/notes/personal/personal-notes.org"
-			       "~/org/notes/projects/project-notes.org")
-	org-refile-targets '(("~/org/todos/todos.org" . (:maxlevel . 1)))
+	org-agenda-files (list "~/org/todos/personal.org"
+			       "~/org/todos/mindcake.org"
+			       "~/org/todos/projects.org")
+	org-refile-targets '(("~/org/todos/personal.org" . (:maxlevel . 1))
+			     ("~/org/todos/mindcake.org" . (:maxlevel . 1))
+			     ("~/org/todos/projects.org" . (:maxlevel . 1)))
 	org-agenda-start-on-weekday 1
 	org-todo-keywords '((sequence "TODO" "STARTED" "DONE"))
 	org-todo-keyword-faces
@@ -130,7 +131,14 @@
     (setq tab-width 2)
     (setq indent-tabs-mode t))
   :config
-  (add-hook 'c++-mode-hook #'arebel-setup-cpp))
+  (add-hook 'c++-mode-hook #'arebel-setup-cpp)
+  (add-hook 'c-mode-hook #'arebel-setup-cpp))
+
+(use-package fic-mode
+  :config
+  (add-hook 'prog-mode-hook `fic-mode))
+
+(setq compilation-scroll-output t)
 
 ;;; For DOS Development
 (modify-coding-system-alist 'file "\\.C\\'" 'utf-8-dos)
