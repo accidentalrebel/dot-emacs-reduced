@@ -144,6 +144,18 @@
 (modify-coding-system-alist 'file "\\.C\\'" 'utf-8-dos)
 (modify-coding-system-alist 'file "\\.H\\'" 'utf-8-dos)
 
+;;; Helpful snippets ================================================
+
+;; Found here: https://emacs.stackexchange.com/a/7479/10481
+(defun find-and-compile ()
+  "Traveling up the path, find a Makefile and `compile'."
+  (interactive)
+  (when (locate-dominating-file default-directory "Makefile")
+  (with-temp-buffer
+    (cd (locate-dominating-file default-directory "Makefile"))
+    (compile "make -k"))))
+(bind-key "C-x m" `find-and-compile)
+
 ;;; Social ==========================================================
 ;; (use-package twittering-mode
 ;;   :init
@@ -166,7 +178,8 @@
 (setq slack-cli-channels '( "bot-test-channel" "chefwars_dev" "chefwars_art"))
 
 (setq elfeed-feeds
-      '("https://www.rockysunico.com/feeds/posts/default?alt=rss"))
+      '("https://www.rockysunico.com/feeds/posts/default?alt=rss"
+	"https://factorio.com/blog/rss"))
 
 ;;; Remoting ==========================================================
 (setq tramp-default-method "ssh")
