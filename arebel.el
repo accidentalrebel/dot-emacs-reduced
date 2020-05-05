@@ -135,6 +135,8 @@
   (add-hook 'c-mode-hook #'arebel-setup-cpp))
 
 (use-package fic-mode
+  :init
+  (setq fic-highlighted-words '("FIXME" "TODO" "BUG" "NOTE"))
   :config
   (add-hook 'prog-mode-hook `fic-mode))
 
@@ -150,10 +152,11 @@
 (defun find-and-compile ()
   "Traveling up the path, find a Makefile and `compile'."
   (interactive)
-  (when (locate-dominating-file default-directory "Makefile")
-  (with-temp-buffer
-    (cd (locate-dominating-file default-directory "Makefile"))
-    (compile "make -k"))))
+  (let ((cmd (read-string "Compile command: " "make -k")))
+    (when (locate-dominating-file default-directory "Makefile")
+      (with-temp-buffer
+	(cd (locate-dominating-file default-directory "Makefile"))
+	(compile cmd)))))
 (bind-key "C-x m" `find-and-compile)
 
 ;;; Social ==========================================================
@@ -176,6 +179,8 @@
   (load "~/development/projects/elisp/slack-cli/slack-cli.el"))
 
 (setq slack-cli-channels '( "bot-test-channel" "chefwars_dev" "chefwars_art"))
+
+(setq blog-list '( "karlo.licudine.me" "accidentalrebel.com"))
 
 (setq elfeed-feeds
       '("https://www.rockysunico.com/feeds/posts/default?alt=rss"
