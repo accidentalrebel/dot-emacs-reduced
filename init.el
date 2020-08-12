@@ -2,7 +2,7 @@
 
 (package-initialize)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/"))
+	     '("melpa" . "http://melpa.org/packages/"))
 ;; (add-to-list 'package-archives
 ;; 	     '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (add-to-list 'package-archives
@@ -70,7 +70,7 @@
 
 ;;; Theme ==========================================================
 (load-theme 'deeper-blue)
-(set-face-attribute 'default nil :height 140 :weight 'normal :font "DejaVu Sans Mono")
+(set-face-attribute 'default nil :height 124 :weight 'normal :font "DejaVu Sans Mono")
 
 ;;; Setting up ==========================================================
 (when (file-exists-p "~/.emacs.d/arebel.el")
@@ -83,6 +83,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (fringe-mode 1)
+(column-number-mode)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;;; Custom Set Variables ==========================================================
@@ -97,7 +98,7 @@
  '(auth-source-save-behavior nil)
  '(package-selected-packages
    (quote
-    (edit-indirect ace-window fic-mode helm jedi omnisharp yasnippet-classic-snippets yasnippet csharp-mode speed-type elfeed php-mode hackernews lua-mode multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
+    (paredit edit-indirect ace-window fic-mode helm jedi omnisharp yasnippet-classic-snippets yasnippet csharp-mode speed-type elfeed php-mode hackernews lua-mode multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key)))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))
