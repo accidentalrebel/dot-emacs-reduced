@@ -25,6 +25,7 @@
 (bind-key "C-c e s" 'multi-term)
 (bind-key "C-x e" 'other-frame)
 (bind-key "C-c C-v" 'revert-buffer)
+
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;;; Packages ==========================================================
@@ -71,6 +72,11 @@
 ;;; Theme ==========================================================
 (load-theme 'deeper-blue)
 (set-face-attribute 'default nil :height 124 :weight 'normal :font "DejaVu Sans Mono")
+
+;;; Term ==========================================================
+(defun term-send-C-x ()
+  (interactive)
+  (term-send-raw-string "\C-x"))
 
 ;;; Setting up ==========================================================
 (when (file-exists-p "~/.emacs.d/arebel.el")

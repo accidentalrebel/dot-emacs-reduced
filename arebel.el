@@ -152,7 +152,7 @@
 (defun find-and-compile ()
   "Traveling up the path, find a Makefile and `compile'."
   (interactive)
-  (let ((cmd (read-string "Compile command: " "make -k")))
+  (let ((cmd (read-string "Compile command: " "make ")))
     (when (locate-dominating-file default-directory "Makefile")
       (with-temp-buffer
 	(cd (locate-dominating-file default-directory "Makefile"))
@@ -160,9 +160,10 @@
 (bind-key "C-x m" `find-and-compile)
 
 ;;; Social ==========================================================
-;; (use-package twittering-mode
-;;   :init
-;;   (setq twittering-icon-mode t))
+(use-package twittering-mode
+  :init
+  (setq twittering-icon-mode t)
+  (setq twittering-use-icon-storage t))
 
 ;;; Backups ==========================================================
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
@@ -178,6 +179,13 @@
 (when (file-exists-p "~/development/projects/elisp/slack-cli/slack-cli.el")
   (load "~/development/projects/elisp/slack-cli/slack-cli.el"))
 
+(when (file-exists-p "~/development/projects/elisp/coordinate.el/coordinate.el")
+  (add-to-list 'load-path "~/development/projects/elisp/coordinate.el/coordinate")
+  (load "~/development/projects/elisp/coordinate.el/coordinate.el"))
+
+(when (not (locate-library "emacs-game-engine"))
+  (add-to-list 'load-path "~/development/projects/elisp/emacs-game-engine/"))
+
 (setq slack-cli-channels '( "bot-test-channel" "chefwars_dev" "chefwars_art"))
 
 (setq blog-list '( "karlo.licudine.me" "accidentalrebel.com"))
@@ -185,6 +193,9 @@
 (setq elfeed-feeds
       '("https://www.rockysunico.com/feeds/posts/default?alt=rss"
 	"https://factorio.com/blog/rss"))
+
+(defun insert-current-date () (interactive)
+       (insert (shell-command-to-string "echo -n $(date \"+%Y-%m-%d %H\:%M\")")))
 
 ;;; Remoting ==========================================================
 (setq tramp-default-method "ssh")
