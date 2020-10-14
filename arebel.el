@@ -31,6 +31,10 @@
 (use-package recentf-mode
   :bind(("C-c r" . counsel-recentf)))
 
+(use-package pomidor
+  :config (setq pomidor-sound-tick nil
+		pomidor-sound-tack nil))
+
 ;;; Auth ==========================================================
 (when (file-exists-p "~/.emacs.d/auth.el")
   (load "~/.emacs.d/auth.el"))
@@ -145,6 +149,9 @@
 ;;; For DOS Development
 (modify-coding-system-alist 'file "\\.C\\'" 'utf-8-dos)
 (modify-coding-system-alist 'file "\\.H\\'" 'utf-8-dos)
+
+;;; For MindCake Development
+(load "/shome/development/projects/mindcake/histohunters/Assets/tools/scripts/mindcake-set-build-version.el")
 
 ;;; Helpful snippets ================================================
 
