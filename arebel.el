@@ -31,9 +31,9 @@
 (use-package recentf-mode
   :bind(("C-c r" . counsel-recentf)))
 
-(use-package pomidor
-  :config (setq pomidor-sound-tick nil
-		pomidor-sound-tack nil))
+;; (use-package pomidor
+;;   :config (setq pomidor-sound-tick nil
+;; 		pomidor-sound-tack nil))
 
 ;;; Auth ==========================================================
 (when (file-exists-p "~/.emacs.d/auth.el")
@@ -74,9 +74,16 @@
   :bind (("C-c a" . org-agenda)
 	 ("C-c c" . org-capture)))
 
+(use-package org-crypt
+   :ensure nil
+   :after org
+   :init (org-crypt-use-before-save-magic)
+   :custom (org-crypt-key "688512E0A252F187D0DE3CEF852B098E5C4A3235"))
+
 (use-package org-journal
   :after org
   :init
+  (setq org-journal-enable-encryption t)
   (setq org-journal-dir "~/org/journals/")
   (setq org-journal-file-format "%Y%m%d.org"))
 
@@ -151,7 +158,7 @@
 (modify-coding-system-alist 'file "\\.H\\'" 'utf-8-dos)
 
 ;;; For MindCake Development
-(load "/shome/development/projects/mindcake/histohunters/Assets/tools/scripts/mindcake-set-build-version.el")
+;; (load "/shome/development/projects/mindcake/histohunters/Assets/tools/scripts/mindcake-set-build-version.el")
 
 ;;; Helpful snippets ================================================
 
@@ -167,10 +174,10 @@
 (bind-key "C-x m" `find-and-compile)
 
 ;;; Social ==========================================================
-(use-package twittering-mode
-  :init
-  (setq twittering-icon-mode t)
-  (setq twittering-use-icon-storage t))
+;; (use-package twittering-mode
+;;   :init
+;;   (setq twittering-icon-mode t)
+;;   (setq twittering-use-icon-storage t))
 
 ;;; Backups ==========================================================
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
