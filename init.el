@@ -5,8 +5,8 @@
 	     '("melpa" . "http://melpa.org/packages/"))
 ;; (add-to-list 'package-archives
 ;; 	     '("melpa-stable" . "http://stable.melpa.org/packages/"))
-(add-to-list 'package-archives
-	     '("org" . "http://orgmode.org/elpa/"))
+;; (add-to-list 'package-archives
+;; 	     '("org" . "http://orgmode.org/elpa/"))
 
 ;;; Keybindings ==========================================================
 
@@ -71,7 +71,7 @@
 
 ;;; Theme ==========================================================
 (load-theme 'deeper-blue)
-(set-face-attribute 'default nil :height 124 :weight 'normal :font "DejaVu Sans Mono")
+(set-face-attribute 'default nil :height 108 :weight 'normal :font "DejaVu Sans Mono")
 
 ;;; Term ==========================================================
 (defun term-send-C-x ()
@@ -103,7 +103,7 @@
  '(asana-selected-workspace-name "Mindcake Games" t)
  '(auth-source-save-behavior nil)
  '(package-selected-packages
-   '(alert pomidor paredit edit-indirect ace-window fic-mode helm jedi omnisharp yasnippet-classic-snippets yasnippet csharp-mode speed-type elfeed php-mode hackernews lua-mode multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key))
+   '(elpy alert pomidor paredit edit-indirect ace-window fic-mode helm jedi omnisharp yasnippet-classic-snippets yasnippet csharp-mode speed-type elfeed php-mode hackernews lua-mode multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key))
  '(projectile-mode t nil (projectile))
  '(show-paren-mode t)
  '(smartparens-global-mode t))

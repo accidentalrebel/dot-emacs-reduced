@@ -44,10 +44,12 @@
   :init
   (setq org-default-notes-file "~/org/notes/notes.org"
 	org-agenda-files (list "~/org/todos/personal.org"
-			       "~/org/todos/mindcake.org"
+			       "~/org/todos/mindcakcfe.org"
+			       "~/org/todos/3layers.org"
 			       "~/org/todos/projects.org")
 	org-refile-targets '(("~/org/todos/personal.org" . (:maxlevel . 1))
 			     ("~/org/todos/mindcake.org" . (:maxlevel . 1))
+			     ("~/org/todos/3layers.org" . (:maxlevel . 1))
 			     ("~/org/todos/projects.org" . (:maxlevel . 1)))
 	org-agenda-start-on-weekday 1
 	org-todo-keywords '((sequence "TODO" "STARTED" "DONE"))
@@ -202,7 +204,7 @@
 
 (setq slack-cli-channels '( "bot-test-channel" "chefwars_dev" "chefwars_art"))
 
-(setq blog-list '( "karlo.licudine.me" "accidentalrebel.com"))
+(setq blog-list '( "accidentalrebel.com"))
 
 (setq elfeed-feeds
       '("https://www.rockysunico.com/feeds/posts/default?alt=rss"
