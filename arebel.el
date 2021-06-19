@@ -44,7 +44,7 @@
   :init
   (setq org-default-notes-file "~/org/notes/notes.org"
 	org-agenda-files (list "~/org/todos/personal.org"
-			       "~/org/todos/mindcakcfe.org"
+			       "~/org/todos/mindcake.org"
 			       "~/org/todos/3layers.org"
 			       "~/org/todos/projects.org")
 	org-refile-targets '(("~/org/todos/personal.org" . (:maxlevel . 1))
@@ -76,22 +76,26 @@
   :bind (("C-c a" . org-agenda)
 	 ("C-c c" . org-capture)))
 
-(use-package org-crypt
-   :ensure nil
-   :after org
-   :init (org-crypt-use-before-save-magic)
-   :custom (org-crypt-key "688512E0A252F187D0DE3CEF852B098E5C4A3235"))
+;; (use-package org-crypt
+;;    :ensure nil
+;;    :after org
+;;    :init (org-crypt-use-before-save-magic)
+;;    :custom (org-crypt-key "688512E0A252F187D0DE3CEF852B098E5C4A3235"))
 
 (use-package org-journal
   :after org
   :init
-  (setq org-journal-enable-encryption t)
+  ;; (setq org-journal-enable-encryption t)
   (setq org-journal-dir "~/org/journals/")
   (setq org-journal-file-format "%Y%m%d.org"))
 
 ;; (use-package org-tempo)
 
 ;;; Programming ==========================================================
+(use-package smartparens
+  :init
+  (smartparens-global-mode))
+
 (use-package yasnippet
   :init
   (yas-global-mode))
@@ -161,6 +165,9 @@
 
 ;;; For MindCake Development
 ;; (load "/shome/development/projects/mindcake/histohunters/Assets/tools/scripts/mindcake-set-build-version.el")
+
+;;; For Rebel Game Engine dvelopment
+(load "/home/arebel/development/projects/rebel-game-engine/scripts/tools/rge.el")
 
 ;;; Helpful snippets ================================================
 
