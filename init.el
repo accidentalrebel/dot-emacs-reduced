@@ -105,8 +105,7 @@
  '(package-selected-packages
    '(rainbow-delimiters smartparens elpy alert pomidor paredit edit-indirect ace-window fic-mode helm jedi omnisharp yasnippet-classic-snippets yasnippet csharp-mode speed-type elfeed php-mode hackernews lua-mode multi-term pelican-mode twittering-mode calfw arduino-mode company-jedi oauth sudo-edit org calfw-org calfw-cal exec-path-from-shell markdown-mode undo-tree ripgrep company flycheck nim-mode counsel-projectile projectile ac-ispell counsel swiper org-journal magit ivy eww-lnum avy use-package smex golden-ratio bind-key))
  '(projectile-mode t nil (projectile))
- '(show-paren-mode t)
- '(smartparens-global-mode t))
+ '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

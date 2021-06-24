@@ -96,8 +96,7 @@
 
 ;;; Programming ==========================================================
 (use-package smartparens
-  :init
-  (smartparens-global-mode))
+  :hook ((lisp-mode . smartparens-mode)))
 
 (use-package yasnippet
   :init
