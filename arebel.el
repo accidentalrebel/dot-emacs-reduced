@@ -31,6 +31,9 @@
 (use-package recentf-mode
   :bind(("C-c r" . counsel-recentf)))
 
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 ;; (use-package pomidor
 ;;   :config (setq pomidor-sound-tick nil
 ;; 		pomidor-sound-tack nil))
@@ -167,7 +170,8 @@
 ;; (load "/shome/development/projects/mindcake/histohunters/Assets/tools/scripts/mindcake-set-build-version.el")
 
 ;;; For Rebel Game Engine dvelopment
-(load "/home/arebel/development/projects/rebel-game-engine/scripts/tools/rge.el")
+(when (file-exists-p "/home/arebel/development/projects/rebel-game-engine/scripts/tools/rge.el")
+  (load "/home/arebel/development/projects/rebel-game-engine/scripts/tools/rge.el"))
 
 ;;; Helpful snippets ================================================
 
@@ -175,11 +179,11 @@
 (defun find-and-compile ()
   "Traveling up the path, find a Makefile and `compile'."
   (interactive)
-  (let ((cmd (read-string "Compile command: " "make ")))
+  (let ((cmd (read-string "find-and-compile: " compile-command)))
     (when (locate-dominating-file default-directory "Makefile")
       (with-temp-buffer
-	(cd (locate-dominating-file default-directory "Makefile"))
-	(compile cmd)))))
+	(cd (locate-dominating-file default-directory "Makefile"))))
+    (compile cmd)))
 (bind-key "C-x m" `find-and-compile)
 
 ;;; Social ==========================================================
