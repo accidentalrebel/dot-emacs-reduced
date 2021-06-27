@@ -31,7 +31,7 @@
 (use-package recentf-mode
   :bind(("C-c r" . counsel-recentf)))
 
-(when (memq window-system '(mac ns x))
+(when (eq system-type 'windows-system)
   (exec-path-from-shell-initialize))
 
 ;; (use-package pomidor
