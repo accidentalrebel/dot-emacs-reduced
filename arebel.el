@@ -146,8 +146,8 @@
     (c-set-offset 'label '*)
     (c-set-offset 'case-label '*)
     (c-set-offset 'access-label '/)
-    (setq c-basic-offset 2)
-    (setq tab-width 2)
+    (setq c-basic-offset 4)
+    (setq tab-width 4)
     (setq indent-tabs-mode t))
   :config
   (add-hook 'c++-mode-hook #'arebel-setup-cpp)
@@ -184,6 +184,16 @@
 	(cd (locate-dominating-file default-directory "Makefile"))))
     (compile cmd)))
 (bind-key "C-x m" `find-and-compile)
+
+(defun query-replace-at-point ()
+  "\"query-replace\" but gets the word where the cursor is."
+  (interactive)
+  (let ((to-replace (read-string "Query replace at point: "
+				 (thing-at-point 'word)))
+	(to-replace-with (read-string "Query replace at point with: ")))
+    (goto-char (point-min))
+    (query-replace to-replace to-replace-with)))
+(bind-key "M-%" `query-replace-at-point)
 
 ;;; Social ==========================================================
 ;; (use-package twittering-mode
