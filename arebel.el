@@ -191,7 +191,7 @@
   (let ((to-replace (read-string "Query replace at point: "
 				 (thing-at-point 'word)))
 	(to-replace-with (read-string "Query replace at point with: ")))
-    (goto-char (point-min))
+    (forward-line -1)
     (query-replace to-replace to-replace-with)))
 (bind-key "M-%" `query-replace-at-point)
 
